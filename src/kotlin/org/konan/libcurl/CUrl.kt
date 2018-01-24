@@ -2,15 +2,12 @@ package org.konan.libcurl
 
 import kotlinx.cinterop.*
 import platform.*
+import platform.posix.size_t        // for some reason linux may fail if not here
 import libcurl.*
 
 typealias HttpHandler = (String) -> Unit
 
-typealias size_t = Long
-
-
 class CUrl(url: String, USER_AGENT: String = "myexip/tiny kotlin/native cli to myexip") {
-
 
     val stableRef = StableRef.create(this)
     val curl = curl_easy_init()
