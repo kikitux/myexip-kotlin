@@ -6,13 +6,12 @@ import libcurl.*
 
 typealias HttpHandler = (String) -> Unit
 
-class CUrl(url: String) {
+class CUrl(url: String, USER_AGENT: String = "myexip/tiny kotlin/native cli to myexip") {
 
-    val USER_AGENT = "myexip/tiny kotlin/native cli to myexip";
 
     val stableRef = StableRef.create(this)
-
     val curl = curl_easy_init()
+    val header = Event<String>()
 
     init {
         curl_easy_setopt(curl, CURLOPT_URL, url)
@@ -20,14 +19,17 @@ class CUrl(url: String) {
 
         curl_easy_setopt(curl, CURLOPT_HEADERFUNCTION, header)
         curl_easy_setopt(curl, CURLOPT_HEADERDATA, stableRef.asCPointer())
-
         curl_easy_setopt(curl, CURLOPT_USERAGENT, USER_AGENT)
-        curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1)
-        curl_easy_setopt(curl, CURLOPT_NOBODY ,1 );
 
     }
 
-    val header = Event<String>()
+    fun nobody() {
+        curl_easy_setopt(curl, CURLOPT_NOBODY ,1 )
+    }
+
+    fun noprogress() {
+        curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1)
+    }
 
     fun fetch() {
         val res = curl_easy_perform(curl)
@@ -41,13 +43,12 @@ class CUrl(url: String) {
         curl_easy_cleanup(curl)
         stableRef.dispose()
     }
+
 }
 
 fun CPointer<ByteVar>.toKString(length: Int): String {
     val bytes = this.readBytes(length)
-    //return kotlin.text.fromUtf8Array(bytes, 0, bytes.size)
     return bytes.stringFromUtf8()
-    //  warning: 'fromUtf8Array(ByteArray, Int, Int): String' is deprecated. Use ByteArray.stringFromUtf8()
 }
 
 fun header_callback(buffer: CPointer<ByteVar>?, size: size_t, nitems: size_t, userdata: COpaquePointer?): size_t {

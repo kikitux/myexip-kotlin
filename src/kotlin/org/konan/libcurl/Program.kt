@@ -1,15 +1,10 @@
 package org.konan.libcurl
 
-import kotlinx.cinterop.*
-import platform.*
-import libcurl.*
-
 fun myexip(url: String): String{
 
     var ip = "?.?.?.?"
 
     val curl = CUrl(url)
-
 
     curl.header += {
         if( it.contains("My-External-Ip") ) {
@@ -17,6 +12,7 @@ fun myexip(url: String): String{
         }
     }
 
+    curl.nobody()
     curl.fetch()
     curl.close()
 
