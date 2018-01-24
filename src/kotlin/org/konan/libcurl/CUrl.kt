@@ -6,6 +6,9 @@ import libcurl.*
 
 typealias HttpHandler = (String) -> Unit
 
+typealias size_t = Long
+
+
 class CUrl(url: String, USER_AGENT: String = "myexip/tiny kotlin/native cli to myexip") {
 
 
@@ -14,29 +17,22 @@ class CUrl(url: String, USER_AGENT: String = "myexip/tiny kotlin/native cli to m
     val header = Event<String>()
 
     init {
-        curl_easy_setopt(curl, CURLOPT_URL, url)
         val header = staticCFunction(::header_callback)
 
+        curl_easy_setopt(curl, CURLOPT_URL, url)
         curl_easy_setopt(curl, CURLOPT_HEADERFUNCTION, header)
         curl_easy_setopt(curl, CURLOPT_HEADERDATA, stableRef.asCPointer())
         curl_easy_setopt(curl, CURLOPT_USERAGENT, USER_AGENT)
 
     }
 
-    fun nobody() {
-        curl_easy_setopt(curl, CURLOPT_NOBODY ,1 )
+    fun nobody(){
+        curl_easy_setopt(curl, CURLOPT_NOBODY, 1L)
     }
 
-    fun noprogress() {
-        curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1)
-    }
-
-    fun fetch() {
+    fun fetch(): Int {
         val res = curl_easy_perform(curl)
-        if (res != CURLE_OK) {
-            println("curl_easy_perform() failed: ${curl_easy_strerror(res)}")
-        }
-
+        return res
     }
 
     fun close() {

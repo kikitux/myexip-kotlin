@@ -6,8 +6,8 @@ fun main(args: Array<String>) {
 
     var largs = listOf(*args)
 
-    val V4_URL     = "http://ipv4.myexternalip.com";
-    val V6_URL     = "http://ipv6.myexternalip.com";
+    val V4_URL     = "http://ipv4.myexternalip.com"
+    val V6_URL     = "http://ipv6.myexternalip.com"
 
     var url = V4_URL                // default to ipv4
 
