@@ -7,7 +7,7 @@
 pre-requirements:
 - `cmake` and `make`
 - `java`
-- kotlin native: `kotlinc` and `cinterop` binaries in the path
+- [kotlin native](https://github.com/JetBrains/kotlin-native/releases): `kotlinc` and `cinterop` binaries in the path
 
 ie:
 ```
