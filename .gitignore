@@ -1,6 +1,7 @@
 build/
 .idea/
 .gradle/
+cmake-build-*/
 myexip.linux
 myexip.macos
 *.kexe
