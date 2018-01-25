@@ -28,7 +28,9 @@ fun main(args: Array<String>) {
         halp(1)
     }
 
-    println(myexip(url))
+    myexip(url).onEach {
+        println(it)
+    }
 
 }
 
