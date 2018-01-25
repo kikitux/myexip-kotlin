@@ -1,5 +1,0 @@
-/Users/kikitux/Desktop/myexip/myexip-kotlin/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/kikitux/Desktop/myexip/myexip-kotlin/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/kikitux/Desktop/myexip/myexip-kotlin/cmake-build-debug/CMakeFiles/myexip.kexe.dir
-/Users/kikitux/Desktop/myexip/myexip-kotlin/cmake-build-debug/CMakeFiles/myexip.compile.dir
-/Users/kikitux/Desktop/myexip/myexip-kotlin/cmake-build-debug/CMakeFiles/curl_kt.dir

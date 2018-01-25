@@ -1,4 +1,0 @@
-"/Users/kikitux/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/173.4301.33/CLion.app/Contents/bin/cmake/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -D CMAKE_Kotlin_COMPILER=/Users/kikitux/.konan/kotlin-native-macos-0.5/bin/konanc -D CMAKE_Kotlin_CINTEROP=/Users/kikitux/.konan/kotlin-native-macos-0.5/bin/cinterop -G "CodeBlocks - Unix Makefiles" /Users/kikitux/Desktop/myexip/myexip-kotlin
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/kikitux/Desktop/myexip/myexip-kotlin/cmake-build-debug

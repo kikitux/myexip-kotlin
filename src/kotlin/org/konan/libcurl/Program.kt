@@ -6,7 +6,7 @@ fun myexip(url: String): String{
 
     var ip = "?.?.?.?"
 
-    val curl = CUrl(url)
+    val curl = CUrl(url)        // curl object
 
     curl.header += {
         if( it.contains("My-External-Ip") ) {
@@ -14,7 +14,7 @@ fun myexip(url: String): String{
         }
     }
 
-    curl.nobody()
+    curl.nobody()               // tell curl we don't want the body
     val fetch = curl.fetch()
     if (fetch != CURLE_OK){
         //actual error is very ugly ${curl_easy_strerror(res)
