@@ -1,6 +1,8 @@
 package org.konan.libcurl
 
+import kotlinx.cinterop.toKString
 import libcurl.CURLE_OK
+import libcurl.curl_easy_strerror
 
 fun myexip(url: String): String{
 
@@ -17,8 +19,8 @@ fun myexip(url: String): String{
     curl.nobody()               // tell curl we don't want the body
     val fetch = curl.fetch()
     if (fetch != CURLE_OK){
-        //actual error is very ugly ${curl_easy_strerror(res)
-//        exitProcess(1) // fail and exit
+        val emsg = curl_easy_strerror(fetch)
+        println("Error performing CURL download: ${emsg?.toKString()}")
         ip=""
     }
     curl.close()
