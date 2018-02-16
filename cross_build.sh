@@ -2,8 +2,6 @@
 
 DIR=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-source "$DIR/../konan.sh"
-
 INTEROP_ARGS_macbook="-headerFilterAdditionalSearchPrefix /opt/local/include"
 INTEROP_ARGS_linux="-headerFilterAdditionalSearchPrefix /usr/include \
                     -headerFilterAdditionalSearchPrefix /usr/include/x86_64-linux-gnu"
